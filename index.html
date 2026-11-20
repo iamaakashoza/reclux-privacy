@@ -21,7 +21,8 @@
     color-scheme: light dark;
     --bg: #f3f2ee; --surface: #ffffff; --surface-2: #ecebe6; --line: #dcdad3;
     --ink: #0e1116; --ink-2: #545b66;
-    --red: #d7263d; --red-hover: #bf1f35; --lux: #f59e0b; --lux-ink: #7a4b00; --focus: #2f6feb;
+    --red: #f20b18; --red-hover: #d40914; --lux: #f20b18; --lux-ink: #c40d18; --focus: #2f6feb;
+    --ok: #16a34a; --ok-bg: #e7f6ed; --ok-border: #a6dcbb; /* success green, as in Reclux's alerts */
     --backdrop: radial-gradient(70% 55% at 10% 0%, rgb(127 211 230 / 45%), transparent 70%),
       radial-gradient(55% 45% at 100% 100%, rgb(255 181 71 / 30%), transparent 70%), var(--bg);
     --glass-bg: rgb(255 255 255 / 66%); --glass-solid: rgb(252 252 250 / 97%); --glass-border: rgb(14 17 22 / 10%);
@@ -38,7 +39,8 @@
   @media (prefers-color-scheme: dark) {
     :root {
       --bg: #0b0e13; --surface: #151a22; --surface-2: #1f2530; --line: #2c333e;
-      --ink: #eef0f4; --ink-2: #a3acba; --lux: #ffb547; --lux-ink: #ffb547; --focus: #7fd3e6;
+      --ink: #eef0f4; --ink-2: #a3acba; --lux: #f20b18; --lux-ink: #ff5a63; --focus: #7fd3e6;
+      --ok: #3fcf76; --ok-bg: rgb(34 197 94 / 13%); --ok-border: rgb(63 207 118 / 36%);
       --backdrop: radial-gradient(70% 55% at 10% 0%, rgb(58 123 213 / 30%), transparent 70%),
         radial-gradient(55% 45% at 100% 100%, rgb(255 181 71 / 14%), transparent 70%), var(--bg);
       --glass-bg: rgb(24 28 36 / 62%); --glass-solid: rgb(22 26 33 / 97%); --glass-border: rgb(255 255 255 / 12%);
@@ -55,7 +57,7 @@
   ul { list-style: none; }
   a { color: inherit; text-underline-offset: 0.2em; }
   :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: 6px; }
-  ::selection { background: var(--lux); color: #0e1116; }
+  ::selection { background: var(--lux); color: #fff; }
   .skip { position: absolute; left: 1rem; top: -5rem; z-index: 100; padding: 0.75rem 1rem; background: var(--ink); color: var(--bg); border-radius: 10px; }
   .skip:focus { top: 1rem; }
   .wrap { width: min(100% - 2 * var(--gutter), 74rem); margin-inline: auto; }
@@ -100,8 +102,8 @@
   .toc a { display: flex; align-items: center; min-height: 2.25rem; padding: 0.3rem 0 0.3rem 0.85rem; line-height: 1.4; border-left: 2px solid var(--line); color: var(--ink-2); font-size: 0.925rem; text-decoration: none; transition: color 160ms, border-color 160ms; }
   .toc a:hover { color: var(--ink); border-left-color: var(--lux); }
   article { min-width: 0; max-width: 50rem; }
-  .short { display: flex; gap: 0.9rem; padding: clamp(1.1rem, 3vw, 1.6rem); border: 1px solid color-mix(in srgb, var(--lux) 55%, transparent); border-radius: var(--r-xl); background: color-mix(in srgb, var(--lux) 10%, var(--surface)); font-size: clamp(1.0625rem, 2vw, 1.25rem); line-height: 1.5; box-shadow: var(--shadow); }
-  .short svg { flex: none; width: 1.6rem; height: 1.6rem; margin-top: 0.1rem; color: var(--lux-ink); }
+  .short { display: flex; gap: 0.9rem; padding: clamp(1.1rem, 3vw, 1.6rem); border: 1px solid var(--ok-border); border-radius: var(--r-xl); background: var(--ok-bg); font-size: clamp(1.0625rem, 2vw, 1.25rem); line-height: 1.5; box-shadow: var(--shadow); }
+  .short svg { flex: none; width: 1.6rem; height: 1.6rem; margin-top: 0.1rem; color: var(--ok); }
   section { padding-top: clamp(2.25rem, 5vw, 3.25rem); }
   h2 { margin-bottom: 0.9rem; font-size: clamp(1.4rem, 3vw, 1.85rem); line-height: 1.2; font-weight: 650; letter-spacing: -0.025em; }
   section > p { color: var(--ink-2); }
@@ -189,7 +191,7 @@
   <div class="head">
     <div class="wrap">
       <h1 class="rise">Reclux Privacy <em>Policy</em></h1>
-      <p class="meta rise" style="--i:1">Last updated: 17 November 2026 (Reclux 2.0)</p>
+      <p class="meta rise" style="--i:1">Last updated: 20 November 2026 (Reclux 2.0)</p>
     </div>
   </div>
 
@@ -221,6 +223,7 @@
               <tr><td>The picture of your screen, a window or a tab, and the microphone or system sound you choose to record. Edits you make to it (cuts and zooms)</td><td>Written to your browser's private storage on your own computer, then to the folder you pick when you press <strong>Export video</strong></td></tr>
               <tr><td>Your webcam, only if you turn on <strong>Webcam</strong></td><td>Shown live in a circle on your screen and recorded as part of the screen. Never stored or sent on its own</td></tr>
               <tr><td>Where your pointer is on web pages, only if you turn on <strong>Cursor zoom</strong> and only while recording</td><td>Kept in memory to suggest zooms in the editor, then thrown away. Not stored, not sent. The web pages themselves are not read</td></tr>
+              <tr><td>A picture of the tab you are on, taken when you press <strong>Start recording</strong></td><td>Shown behind the share window while the recording starts, then deleted. Not stored, not sent</td></tr>
               <tr><td>Your choices (quality, format, microphone, system sound, webcam and cursor zoom on or off)</td><td>Saved in your browser's local storage on your own computer</td></tr>
               <tr><td>Free disk space</td><td>Read while recording, only to show a warning. Not stored, not sent</td></tr>
               <tr><td>How loud your microphone is, when the microphone and system sound are both on</td><td>Read while recording, only to lower the system sound in the file while you speak. Not stored, not sent</td></tr>
@@ -253,7 +256,8 @@
             <tbody>
               <tr><td class="code">downloads</td><td>Shows the "Save as" window, so you can choose the folder or drive for the finished recording</td></tr>
               <tr><td class="code">unlimitedStorage</td><td>Lets a long recording be written to the browser's private storage while you record</td></tr>
-              <tr><td class="code">scripting</td><td>Places the webcam circle, the recording controls (Firefox) and cursor tracking on web pages while you record. Removed from the pages when recording stops</td></tr>
+              <tr><td class="code">scripting</td><td>Places the webcam circle, the recording controls (when no controls window is open) and cursor tracking on web pages while you record. Removed from the pages when recording stops</td></tr>
+              <tr><td class="code">activeTab</td><td>Takes the one picture of the tab you are on, only when you press Start recording</td></tr>
               <tr><td class="code">Access to web pages (optional)</td><td>Asked only when you turn on Webcam or Cursor zoom, so the circle and cursor zoom work on the pages you record</td></tr>
               <tr><td class="code">power</td><td>Keeps the computer awake while a recording is running (Chrome, Brave, Edge and Opera)</td></tr>
             </tbody>
